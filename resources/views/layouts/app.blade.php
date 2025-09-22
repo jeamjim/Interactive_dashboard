@@ -22,7 +22,8 @@
         
     </head>
     <body class="{{ $class ?? '' }}">
-        @auth()
+        <!-- code inside auth if you want to appear only when logged in -->
+        @auth()  
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
                 <div class="main-panel">
@@ -35,21 +36,26 @@
                     @include('layouts.footer')
                 </div>
             </div>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="" method="POST" style="display: none;">
                 @csrf
             </form>
         @else
             @include('layouts.navbars.navbar')
-            <div class="wrapper wrapper-full-page">
-                <div class="full-page {{ $contentClass ?? '' }}">
+            <div class="wrapper">
+                    @include('layouts.navbars.sidebar')
+                <div class="main-panel">
+                    @include('layouts.navbars.navbar')
+
                     <div class="content">
-                        <div class="container">
-                            @yield('content')
-                        </div>
+                        @yield('content')
                     </div>
+
                     @include('layouts.footer')
                 </div>
             </div>
+            <form id="logout-form" action="" method="POST" style="display: none;">
+                @csrf
+            </form>
         @endauth
         <div class="fixed-plugin">
             <div class="dropdown show-dropdown">

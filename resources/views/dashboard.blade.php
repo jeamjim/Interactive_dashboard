@@ -1,5 +1,9 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
+
+@section('title', 'Dashboard')
+@section('page-title', 'Dashboard')
+
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -345,6 +349,8 @@
             </div>
         </div>
     </div>
+@endsection
+
 
 @push('js')
     <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
